@@ -7,20 +7,13 @@ public class StartTankowania extends BasicSimEvent<StacjaPaliw, Kolejka>{
 	
 	public StartTankowania(StacjaPaliw entity, double delay, Kolejka params) throws SimControlException {
 		super(entity, delay, params);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void onInterruption() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onInterruption() {}
 
 	@Override
-	protected void onTermination() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onTermination() {}
 
 	@Override
 	protected void stateChange() throws SimControlException {
@@ -28,10 +21,11 @@ public class StartTankowania extends BasicSimEvent<StacjaPaliw, Kolejka>{
 		Kolejka kolejka = transitionParams;
 		
 		Dystrybutory dystrybutory = null;
-		if(kolejka.getNazwa() == stacjaPaliw.getDysBenzyna().getNazwa()) dystrybutory = stacjaPaliw.getDysBenzyna();
-		else if(kolejka.getNazwa() == stacjaPaliw.getDysOn().getNazwa()) dystrybutory = stacjaPaliw.getDysOn();
-		else if(kolejka.getNazwa() == stacjaPaliw.getDysLpg().getNazwa()) dystrybutory = stacjaPaliw.getDysLpg();
-		
+		if(kolejka.getNazwa().equals(stacjaPaliw.getDysBenzyna().getNazwa())) dystrybutory = stacjaPaliw.getDysBenzyna();
+		else if(kolejka.getNazwa().equals(stacjaPaliw.getDysOn().getNazwa())) dystrybutory = stacjaPaliw.getDysOn();
+		else if(kolejka.getNazwa().equals(stacjaPaliw.getDysLpg().getNazwa())) dystrybutory = stacjaPaliw.getDysLpg();
+
+		assert dystrybutory != null;
 		dystrybutory.incZajeteDystrybutory();
 		
 		Klient klient = kolejka.remove(0);
@@ -40,7 +34,7 @@ public class StartTankowania extends BasicSimEvent<StacjaPaliw, Kolejka>{
 		Object[] objekty = {klient, kolejka, dystrybutory};
 		
 		System.out.printf("%.3f", simTime());
-		System.out.printf(":: Rozpoczecie tankowania przez klienta nr = " + klient.getId() + ". Dystrybutor: " + dystrybutory.getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+		System.out.print(":: Rozpoczecie tankowania przez klienta nr = " + klient.getId() + ". Dystrybutor: " + dystrybutory.getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
 		
 		double dt = stacjaPaliw.getSimGenerator().erlang(klient.getTankowanie(), stacjaPaliw.getErlang());
 		new KoniecTankowania(stacjaPaliw, dt, objekty);

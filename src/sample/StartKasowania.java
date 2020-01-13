@@ -7,20 +7,13 @@ public class StartKasowania extends BasicSimEvent<StacjaPaliw, Object>{
 
 	public StartKasowania(StacjaPaliw entity, double delay) throws SimControlException {
 		super(entity, delay);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void onInterruption() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onInterruption() {}
 
 	@Override
-	protected void onTermination() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onTermination() {}
 
 	@Override
 	protected void stateChange() throws SimControlException {
@@ -35,7 +28,7 @@ public class StartKasowania extends BasicSimEvent<StacjaPaliw, Object>{
 		if(stacjaPaliw.getKolBuffor().size() > 0) new DodawanieStanowiska(stacjaPaliw, 0);
 		
 		System.out.printf("%.3f", simTime());
-		System.out.printf(":: Rozpoczecie kasowania klienta nr = " + klient.getId() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+		System.out.print(":: Rozpoczecie kasowania klienta nr = " + klient.getId() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
 		
 		double dt = stacjaPaliw.getSimGenerator().exponential(stacjaPaliw.getMi());
 		new KoniecKasowania(stacjaPaliw, dt, klient);

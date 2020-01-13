@@ -7,20 +7,13 @@ public class Blokada extends BasicSimEvent<StacjaPaliw, Object>{
 
 	public Blokada(StacjaPaliw entity, double delay) throws SimControlException {
 		super(entity, delay);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void onInterruption() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onInterruption() {}
 
 	@Override
-	protected void onTermination() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onTermination() {}
 
 	@Override
 	protected void stateChange() throws SimControlException {
@@ -33,17 +26,17 @@ public class Blokada extends BasicSimEvent<StacjaPaliw, Object>{
 				Klient klient = kolejka.remove(0);
 
 				System.out.printf("%.3f", simTime());
-				System.out.printf(":: Odblokowanie klienta nr = " + klient.getId() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+				System.out.print(":: Odblokowanie klienta nr = " + klient.getId() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
 
 				if (stacjaPaliw.getKolMyjnia().addK(klient)) {
 					stacjaPaliw.getKolMyjnia().mvSize.setValue(stacjaPaliw.getKolMyjnia().size());
 					stacjaPaliw.getDysKasa().decZajeteDystrybutory();
 
 					System.out.printf("%.3f", simTime());
-					System.out.printf(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + stacjaPaliw.getKolMyjnia().getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
-                    if(stacjaPaliw.getMyjnia().getZajete() == false) new StartMycia(stacjaPaliw, 0);
+					System.out.print(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + stacjaPaliw.getKolMyjnia().getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+                    if(!stacjaPaliw.getMyjnia().getZajete()) new StartMycia(stacjaPaliw, 0);
 				}
-				if(kolejka.size() > 0){
+					if(kolejka.size() > 0){
 					double dt = stacjaPaliw.getSimGenerator().exponential(stacjaPaliw.getMi());
 					new Blokada(stacjaPaliw, dt);
 				}

@@ -7,20 +7,13 @@ public class BlokadaTankowania extends BasicSimEvent<StacjaPaliw, Object>{
 
 	public BlokadaTankowania(StacjaPaliw entity, double delay) throws SimControlException {
 		super(entity, delay);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void onInterruption() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onInterruption() {}
 
 	@Override
-	protected void onTermination() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onTermination() {}
 
 	@Override
 	protected void stateChange() throws SimControlException {
@@ -33,7 +26,7 @@ public class BlokadaTankowania extends BasicSimEvent<StacjaPaliw, Object>{
 				Klient klient = kolejka.remove(0);
 
 				System.out.printf("%.3f", simTime());
-				System.out.printf(":: Odblokowanie klienta nr = " + klient.getId() + ". BLOKADA TANKOWANIA! Myjnia: " + klient.getChceDoMyjni() + ".\n");
+				System.out.print(":: Odblokowanie klienta nr = " + klient.getId() + ". BLOKADA TANKOWANIA! Myjnia: " + klient.getChceDoMyjni() + ".\n");
 
 				if (stacjaPaliw.getKolKasa().addK(klient)) {
 					klient.setCzasStop(simTime());
@@ -56,11 +49,13 @@ public class BlokadaTankowania extends BasicSimEvent<StacjaPaliw, Object>{
 						kol = stacjaPaliw.getKolLpg();
 					}
 
+					assert dys != null;
 					dys.decZajeteDystrybutory();
 
 					System.out.printf("%.3f", simTime());
-					System.out.printf(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + stacjaPaliw.getKolKasa().getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+					System.out.print(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + stacjaPaliw.getKolKasa().getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
                     if(stacjaPaliw.getDysKasa().getLiczbaDystrybutorow() > stacjaPaliw.getDysKasa().getZajeteDystrybutory()) new StartKasowania(stacjaPaliw, 0);
+					assert kol != null;
 					if(dys.getLiczbaDystrybutorow() > dys.getZajeteDystrybutory() && kol.size() > 0) new StartTankowania(stacjaPaliw, 0, kol);
 				}
 				if(kolejka.size() > 0){

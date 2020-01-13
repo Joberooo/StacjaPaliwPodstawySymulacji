@@ -18,8 +18,8 @@ public class Klient {
 	}
 	
 	public void losujMyjnia(double losowanie, double max) {
-		if(losowanie > 0.8 * max) this.chceDoMyjni = true;
-		else this.chceDoMyjni = false;
+		double maxx = max * 0.8;
+		chceDoMyjni = losowanie > maxx;
 	}
 
 	public void losujTankowanie(double losowanie, int myjnia, double min, double max){
@@ -82,6 +82,5 @@ public class Klient {
 		return this.chceDoMyjni;
 	}
 
-	public void setTankowanie(int tankowanie) { this.tankowanie = tankowanie; }
 	public int getTankowanie() { return  this.tankowanie; }
 }

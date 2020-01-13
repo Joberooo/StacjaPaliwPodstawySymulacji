@@ -2,12 +2,56 @@
 
 <?import javafx.scene.layout.*?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 
-<GridPane alignment="center" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.2-internal" fx:controller="sample.Controller">
-   <columnConstraints>
-      <ColumnConstraints />
-   </columnConstraints>
-   <rowConstraints>
-      <RowConstraints />
-   </rowConstraints>
+<GridPane fx:controller="sample.Controller" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+   <Label text="maxLiczbaKlientow" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+   <TextField fx:id="maxLiczbaKlientow" GridPane.rowIndex="0" GridPane.columnIndex="0" onKeyReleased="#handeKeyReleased"/>
+   <Label text="mi" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+   <TextField fx:id="mi" GridPane.rowIndex="1" GridPane.columnIndex="0" onKeyReleased="#handeKeyReleased"/>
+   <Label text="normalOczekiwana" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+   <TextField fx:id="normalOczekiwana" GridPane.rowIndex="2" GridPane.columnIndex="0" onKeyReleased="#handeKeyReleased"/>
+   <Label text="normalOdchylenie" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+   <TextField fx:id="normalOdchylenie" GridPane.rowIndex="3" GridPane.columnIndex="0" onKeyReleased="#handeKeyReleased"/>
+   <Label text="generatorMin" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+   <TextField fx:id="generatorMin" GridPane.rowIndex="4" GridPane.columnIndex="0" onKeyReleased="#handeKeyReleased"/>
+   <Label text="generatorMax" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+   <TextField fx:id="generatorMax" GridPane.rowIndex="5" GridPane.columnIndex="0" onKeyReleased="#handeKeyReleased"/>
+   <Label text="erlang" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+   <TextField fx:id="erlang" GridPane.rowIndex="6" GridPane.columnIndex="0" onKeyReleased="#handeKeyReleased"/>
+
+   <Label text="Wielkosc kol Buffor" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+   <TextField fx:id="wielkosciKolejek0" GridPane.rowIndex="0" GridPane.columnIndex="2" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Wielkosc kol Benzyna" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+   <TextField fx:id="wielkosciKolejek1" GridPane.rowIndex="1" GridPane.columnIndex="2" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Wielkosc kol ON" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+   <TextField fx:id="wielkosciKolejek2" GridPane.rowIndex="2" GridPane.columnIndex="2" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Wielkosc kol LPG" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+   <TextField fx:id="wielkosciKolejek3" GridPane.rowIndex="3" GridPane.columnIndex="2" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Wielkosc kol Kasa" GridPane.rowIndex="4" GridPane.columnIndex="3" />
+   <TextField fx:id="wielkosciKolejek4" GridPane.rowIndex="4" GridPane.columnIndex="2" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Wielkosc kol Myjnia" GridPane.rowIndex="5" GridPane.columnIndex="3" />
+   <TextField fx:id="wielkosciKolejek5" GridPane.rowIndex="5" GridPane.columnIndex="2" onKeyReleased="#handeKeyReleased"/>
+
+   <Label text="Liczba dys Benzyna" GridPane.rowIndex="0" GridPane.columnIndex="5" />
+   <TextField fx:id="wielkosciDystrybutorow0" GridPane.rowIndex="0" GridPane.columnIndex="4" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Liczba dys ON" GridPane.rowIndex="1" GridPane.columnIndex="5" />
+   <TextField fx:id="wielkosciDystrybutorow1" GridPane.rowIndex="1" GridPane.columnIndex="4" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Liczba dys LPG" GridPane.rowIndex="2" GridPane.columnIndex="5" />
+   <TextField fx:id="wielkosciDystrybutorow2" GridPane.rowIndex="2" GridPane.columnIndex="4" onKeyReleased="#handeKeyReleased"/>
+   <Label text="Liczba Kas" GridPane.rowIndex="3" GridPane.columnIndex="5" />
+   <TextField fx:id="wielkosciDystrybutorow3" GridPane.rowIndex="3" GridPane.columnIndex="4" onKeyReleased="#handeKeyReleased"/>
+
+   <Label text="Skok czasu" GridPane.rowIndex="5" GridPane.columnIndex="5" />
+   <TextField fx:id="skokCzasu" GridPane.rowIndex="5" GridPane.columnIndex="4" onKeyReleased="#handeKeyReleased"/>
+
+   <Label text="Odswiezenie (ms)" GridPane.rowIndex="6" GridPane.columnIndex="5" />
+   <TextField fx:id="odswiezenieText" GridPane.rowIndex="6" GridPane.columnIndex="4" onKeyReleased="#handeKeyReleased"/>
+
+   <Button fx:id="sendButton" text="Send variables" GridPane.rowIndex="7" GridPane.columnIndex="0" onAction="#onButtonClick"/>
+   <Label fx:id="ourLabel" text="Variables didn't send." GridPane.rowIndex="8" GridPane.columnIndex="0" />
+
+   <Label fx:id="blad" GridPane.rowIndex="8" GridPane.columnIndex="5" />
 </GridPane>

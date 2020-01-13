@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<GridPane fx:controller="sample.PetrolController" xmlns:fx="http://javafx.com/fxml" alignment="center" hgap="10" vgap="10">
+   <Label text="Symulacja Stacji Paliw - Patryk BARCZAK - I7B1S1:" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+
+   <Label text="SimTime:" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+   <Label fx:id="simTimeLabel" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+   <Label text="Licznik klientow (obsluzonych/straconych/razem):" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+   <Label fx:id="licznikKlientow2" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+   <Label text="Prawdopodobienstwo utraty klienta:" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+   <Label fx:id="prawdopodobienstwo2" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+   <Label text="Kolejka do Benzyny" GridPane.rowIndex="4" GridPane.columnIndex="0" />
+   <Label fx:id="kolBenzyna" GridPane.rowIndex="4" GridPane.columnIndex="1" />
+
+   <Label text="Kolejka do ON" GridPane.rowIndex="5" GridPane.columnIndex="0" />
+   <Label fx:id="kolOn" GridPane.rowIndex="5" GridPane.columnIndex="1" />
+
+   <Label text="Kolejka do LPG" GridPane.rowIndex="6" GridPane.columnIndex="0" />
+   <Label fx:id="kolLpg" GridPane.rowIndex="6" GridPane.columnIndex="1" />
+
+   <Label text="Kolejka do Kas" GridPane.rowIndex="7" GridPane.columnIndex="0" />
+   <Label fx:id="kolKasy" GridPane.rowIndex="7" GridPane.columnIndex="1" />
+
+   <Label text="Kolejka do Myjni" GridPane.rowIndex="8" GridPane.columnIndex="0" />
+   <Label fx:id="kolMyjnie" GridPane.rowIndex="8" GridPane.columnIndex="1" />
+
+   <Label text="Myjnia (tak/nie)" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+   <Label fx:id="myjniaTakNie" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+   <Label text="Dystrybutory Benzyny" GridPane.rowIndex="4" GridPane.columnIndex="2" />
+   <Label fx:id="dysBenzyna" GridPane.rowIndex="4" GridPane.columnIndex="3" />
+
+   <Label text="Dystrybutory ON" GridPane.rowIndex="5" GridPane.columnIndex="2" />
+   <Label fx:id="dysOn" GridPane.rowIndex="5" GridPane.columnIndex="3" />
+
+   <Label text="Dystrybutory LPG" GridPane.rowIndex="6" GridPane.columnIndex="2" />
+   <Label fx:id="dysLpg" GridPane.rowIndex="6" GridPane.columnIndex="3" />
+
+   <Label text="Kasy" GridPane.rowIndex="7" GridPane.columnIndex="2" />
+   <Label fx:id="dysKasy" GridPane.rowIndex="7" GridPane.columnIndex="3" />
+
+   <Label text="Myjnia zajeta" GridPane.rowIndex="8" GridPane.columnIndex="2" />
+   <Label fx:id="myjnia" GridPane.rowIndex="8" GridPane.columnIndex="3" />
+
+
+</GridPane>

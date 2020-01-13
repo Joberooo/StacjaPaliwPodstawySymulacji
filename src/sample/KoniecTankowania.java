@@ -7,20 +7,13 @@ public class KoniecTankowania extends BasicSimEvent<StacjaPaliw, Object[]>{
 	
 	public KoniecTankowania(StacjaPaliw entity, double delay, Object[] params) throws SimControlException {
 		super(entity, delay, params);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void onInterruption() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onInterruption() {}
 
 	@Override
-	protected void onTermination() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onTermination() {}
 
 	@Override
 	protected void stateChange() throws SimControlException {
@@ -34,14 +27,14 @@ public class KoniecTankowania extends BasicSimEvent<StacjaPaliw, Object[]>{
 			if(stacjaPaliw.getKolKasa().addK(klient))
 			{
 				System.out.printf("%.3f", simTime());
-				System.out.printf(":: Zakonczenie tankowania przez klienta nr = " + klient.getId() + ". Dystrybutor: " + kolejka.getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+				System.out.print(":: Zakonczenie tankowania przez klienta nr = " + klient.getId() + ". Dystrybutor: " + kolejka.getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
 				klient.setCzasStop(simTime());
 				stacjaPaliw.mvTime[0].setValue(klient.getCzasStop() - klient.getCzasStart());
 				System.out.println("Czas start tankowania: " + klient.getCzasStart() + " czas stop tankowania: " + klient.getCzasStop() + " roznica: " + (klient.getCzasStop() - klient.getCzasStart()));
 				if(klient.getChceDoMyjni()) klient.setCzasStart(simTime());
 				dystrybutory.decZajeteDystrybutory();
 				System.out.printf("%.3f",  simTime());
-				System.out.printf(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + stacjaPaliw.getKolKasa().getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+				System.out.print(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + stacjaPaliw.getKolKasa().getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
 				if(stacjaPaliw.getDysKasa().getZajeteDystrybutory() < stacjaPaliw.getDysKasa().getLiczbaDystrybutorow()) {
 					new StartKasowania(stacjaPaliw, 0);
 				}
@@ -50,10 +43,10 @@ public class KoniecTankowania extends BasicSimEvent<StacjaPaliw, Object[]>{
 		else{
 			if(stacjaPaliw.getKolBlokadaTankowanie().addK(klient)) {
 				System.out.printf("%.3f", simTime());
-				System.out.printf(":: Zakonczenie tankowania przez klienta nr = " + klient.getId() + ". Dystrybutor: " + kolejka.getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
+				System.out.print(":: Zakonczenie tankowania przez klienta nr = " + klient.getId() + ". Dystrybutor: " + kolejka.getNazwa() + ". Myjnia: " + klient.getChceDoMyjni() + ".\n");
 
-				System.out.printf("Zablokowano klienta nr = " + klient.getId() + "! PO TANKOWANIU!\n");
-				System.out.printf("BlokadaTankowania: " + stacjaPaliw.getKolBlokadaTankowanie().size() + "/" + stacjaPaliw.getKolBlokadaTankowanie().getPojemnosc() + "\n");
+				System.out.print("Zablokowano klienta nr = " + klient.getId() + "! PO TANKOWANIU!\n");
+				System.out.print("BlokadaTankowania: " + stacjaPaliw.getKolBlokadaTankowanie().size() + "/" + stacjaPaliw.getKolBlokadaTankowanie().getPojemnosc() + "\n");
 				new BlokadaTankowania(stacjaPaliw, 0);
 			}
 		}

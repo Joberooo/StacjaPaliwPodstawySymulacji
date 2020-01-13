@@ -7,20 +7,13 @@ public class StworzenieKlienta extends BasicSimEvent<StacjaPaliw, Object>{
 	
 	public StworzenieKlienta(StacjaPaliw entity, double delay) throws SimControlException {
 		super(entity, delay);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	protected void onInterruption() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onInterruption() {}
 
 	@Override
-	protected void onTermination() throws SimControlException {
-		// TODO Auto-generated method stub
-		
-	}
+	protected void onTermination() {}
 
 	@Override
 	protected void stateChange() throws SimControlException {
@@ -46,15 +39,15 @@ public class StworzenieKlienta extends BasicSimEvent<StacjaPaliw, Object>{
 
 		if(kolejka.addK(klient)){			
 			System.out.printf("%.3f", simTime());
-			System.out.printf(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + kolejka.getNazwa() + ".\tMyjnia: " + klient.getChceDoMyjni() + ". Tankowanie: " + klient.getTankowanie() + ".\n");
-			System.out.printf("Tankowanie: 0 = nie chce tankowac, 1 = Benzyna, 2 = ON, 3 = LPG\n");
+			System.out.print(":: Wstawienie klienta nr = " + klient.getId() + " do kolejki: " + kolejka.getNazwa() + ".\tMyjnia: " + klient.getChceDoMyjni() + ". Tankowanie: " + klient.getTankowanie() + ".\n");
+			System.out.print("Tankowanie: 0 = nie chce tankowac, 1 = Benzyna, 2 = ON, 3 = LPG\n");
 			if(klient.getChceDoMyjni()) stacjaPaliw.incMyjniaTak();
 			else if(!klient.getChceDoMyjni()) stacjaPaliw.incMyjniaNie();
 		}
 		else {
 			System.out.printf("%.3f", simTime());
-			System.out.printf(":: Strata klienta nr = " + klient.getId() + " w kolejce: " + kolejka.getNazwa() + ".   \tMyjnia: " + klient.getChceDoMyjni() + ". Tankowanie: " + klient.getTankowanie() + ".\n");
-			System.out.printf("Tankowanie: 0 = nie chce tankowac, 1 = Benzyna, 2 = ON, 3 = LPG\n");
+			System.out.print(":: Strata klienta nr = " + klient.getId() + " w kolejce: " + kolejka.getNazwa() + ".   \tMyjnia: " + klient.getChceDoMyjni() + ". Tankowanie: " + klient.getTankowanie() + ".\n");
+			System.out.print("Tankowanie: 0 = nie chce tankowac, 1 = Benzyna, 2 = ON, 3 = LPG\n");
 			if(klient.getTankowanie() == 0){
 				stacjaPaliw.getKolMyjnia().incLicznikStrat();
 			}
