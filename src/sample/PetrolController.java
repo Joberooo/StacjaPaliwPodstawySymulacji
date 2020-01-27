@@ -4,7 +4,6 @@ import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.application.Platform;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.util.Duration;
@@ -25,6 +24,13 @@ public class PetrolController {
     @FXML private Label dysKasy;
     @FXML private Label myjnia;
     @FXML private Label myjniaTakNie;
+    @FXML private Label bezynaGraniczna;
+    @FXML private Label onGraniczna;
+    @FXML private Label lpgGraniczna;
+    @FXML private Label myjniaGraniczna;
+    @FXML private Label tankowanieGraniczne;
+    @FXML private Label mycieGraniczne;
+
 
     private int[] data1;
     private double[] data2;
@@ -49,7 +55,7 @@ public class PetrolController {
 
         System.out.println("Odswiezenie = " + data1[12]);
         final Timeline timeline = new Timeline(new KeyFrame(Duration.millis(data1[12]),
-                (EventHandler) event -> {
+                event -> {
                     simTimeLabel.setText("" + startStacjaPaliw.getSimTime());
                     simTimeLabel.setText("" + startStacjaPaliw.getSimTime());
                     licznikKlientow2.setText("" + startStacjaPaliw.getStacjaPaliw().getKolBuffor().getLicznikKlientow() + "/" + startStacjaPaliw.getStacjaPaliw().getKolBuffor().getLicznikStrat() + "/" + (startStacjaPaliw.getStacjaPaliw().getKolBuffor().getLicznikKlientow() + startStacjaPaliw.getStacjaPaliw().getKolBuffor().getLicznikStrat()));
@@ -71,6 +77,14 @@ public class PetrolController {
                     dysKasy.setText("" + startStacjaPaliw.getStacjaPaliw().getDysKasa().getZajeteDystrybutory() + "/" + startStacjaPaliw.getStacjaPaliw().getDysKasa().getLiczbaDystrybutorow());
 
                     myjnia.setText("" + startStacjaPaliw.getStacjaPaliw().getMyjnia().getZajete());
+
+                    bezynaGraniczna.setText("" + startStacjaPaliw.benzynaG);
+                    onGraniczna.setText("" + startStacjaPaliw.onG);
+                    lpgGraniczna.setText("" + startStacjaPaliw.lpgG);
+                    myjniaGraniczna.setText("" + startStacjaPaliw.myjniaG);
+
+                    tankowanieGraniczne.setText("" + startStacjaPaliw.tankowanieG);
+                    mycieGraniczne.setText("" + startStacjaPaliw.mycieG);
                 }));
         timeline.setCycleCount(Animation.INDEFINITE);
         timeline.play();

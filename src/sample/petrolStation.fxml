@@ -48,5 +48,14 @@
    <Label text="Myjnia zajeta" GridPane.rowIndex="8" GridPane.columnIndex="2" />
    <Label fx:id="myjnia" GridPane.rowIndex="8" GridPane.columnIndex="3" />
 
+   <Label text="Oczekiwana graniczna liczba klientow w kolejce (Benzyna/ON/LPG/Myjnia):" GridPane.rowIndex="9" GridPane.columnIndex="0" />
+   <Label fx:id="bezynaGraniczna" GridPane.rowIndex="10" GridPane.columnIndex="0" />
+   <Label fx:id="onGraniczna" GridPane.rowIndex="10" GridPane.columnIndex="1" />
+   <Label fx:id="lpgGraniczna" GridPane.rowIndex="10" GridPane.columnIndex="2" />
+   <Label fx:id="myjniaGraniczna" GridPane.rowIndex="10" GridPane.columnIndex="3" />
 
+   <Label text="Oczekiwany graniczny czas tankowania samochodu:" GridPane.rowIndex="11" GridPane.columnIndex="0" />
+   <Label fx:id="tankowanieGraniczne" GridPane.rowIndex="11" GridPane.columnIndex="1" />
+   <Label text="Oczekiwany graniczny czas mycia samochodu:" GridPane.rowIndex="12" GridPane.columnIndex="0" />
+   <Label fx:id="mycieGraniczne" GridPane.rowIndex="12" GridPane.columnIndex="1" />
 </GridPane>

@@ -4,6 +4,7 @@ import dissimlab.monitors.Diagram;
 import dissimlab.monitors.MonitoredVar;
 import dissimlab.simcore.SimControlException;
 import dissimlab.simcore.SimManager;
+import dissimlab.monitors.Statistics;
 
 import java.awt.*;
 
@@ -12,6 +13,14 @@ public class StartStacjaPaliw {
     private SimManager simManager;
     private StacjaPaliw stacjaPaliw;
     private double prawdopodobienstwo;
+
+    public double benzynaG;
+    public double onG;
+    public double lpgG;
+    public double myjniaG;
+
+    public double tankowanieG;
+    public double mycieG;
 
     public StartStacjaPaliw(int[] data1, double[] data2) {
         int maxLiczbaKlientow = data1[0]; //1000
@@ -97,6 +106,22 @@ public class StartStacjaPaliw {
 
             System.out.println("\nSpośrod klientow (nieutraconych) dodanych do wszystkich kolejek:");
             System.out.println("Myjnia (Tak/Nie): " + stacjaPaliw.getMyjniaTak() + "/" + stacjaPaliw.getMyjniaNie());
+
+            System.out.println("------------------------------------------------------------------\nOczekiwana graniczna liczba samochodow w kolejnce:");
+            benzynaG = Statistics.arithmeticMean(mvSize[0]);
+            System.out.println("Benzyna: " + benzynaG);
+            onG = Statistics.arithmeticMean(mvSize[1]);
+            System.out.println("ON: " + onG);
+            lpgG = Statistics.arithmeticMean(mvSize[2]);
+            System.out.println("LPG: " + lpgG);
+            myjniaG = Statistics.arithmeticMean(mvSize[3]);
+            System.out.println("Myjnia: " + myjniaG);
+
+            tankowanieG = Statistics.arithmeticMean(mvTime[0]);
+            System.out.println("\nOczekiwany graniczny czas tankowania samochodu: " + tankowanieG);
+
+            mycieG = Statistics.arithmeticMean(mvTime[1]);
+            System.out.println("Oczekiwany graniczny czas mycia samochodu: " + mycieG);
 
             prawdopodobienstwo = ((double)stacjaPaliw.getKolBuffor().getLicznikStrat()/suma);
             System.out.println("Prawdopodobienstwo utraty klienta: " + prawdopodobienstwo);
